@@ -1,5 +1,5 @@
 C++ = c++
-STD = -std=c++11
+STD = -std=c++98
 C++_FLAGS = -Wall -Wextra -Werror
 
 INFILES =	Bureaucrat.cpp \
