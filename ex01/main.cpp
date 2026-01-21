@@ -6,7 +6,7 @@
 /*   By: aapadill <aapadill@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 17:38:36 by aapadill          #+#    #+#             */
-/*   Updated: 2026/01/21 03:21:57 by aapadill         ###   ########.fr       */
+/*   Updated: 2026/01/21 01:08:51 by aapadill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,22 +24,18 @@ static void test_construct_valid()
 static void test_construct_invalid()
 {	
 	std::cout << "\n -- test_construct_valid -- \n";
-	try
-	{
+
+	try {
 		Bureaucrat x("testingTooHigh", 0);
 		std::cout << x << std::endl; //shouldn't run
-	}
-	catch (std::exception &e)
-	{	
+	} catch (std::exception &e) {	
 		std::cout << "Caught: "  << e.what() << std::endl;
 	}
-	try
-	{
+
+	try {
 		Bureaucrat y("testingTooLow", 151);
 		std::cout << y << std::endl; //shouldn't run
-	}
-	catch (std::exception &e)
-	{	
+	} catch (std::exception &e) {	
 		std::cout << "Caught: "  << e.what() << std::endl;
 	}
 }
@@ -48,25 +44,19 @@ static void test_increment_decrement_edges()
 {
 	std::cout << "\n -- test_increment_decrement_edges -- \n";
 
-	try
-	{
+	try {
 		Bureaucrat top("Top", 1);
 		std::cout << top << std::endl;
 		top.incrementGrade(); //should throw
-	}
-	catch (std::exception &e)
-	{
+	} catch (std::exception &e) {
 		std::cout << "Caught when incrementing max: " << e.what() << std::endl;
 	}
 
-	try
-	{
+	try {
 		Bureaucrat low("Low", 150);
 		std::cout << low << std::endl;
 		low.decrementGrade(); //should throw
-	}
-	catch (std::exception &e)
-	{
+	} catch (std::exception &e) {
 		std::cout << "Caught when decrementing min: " << e.what() << std::endl;
 	}
 }
