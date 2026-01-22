@@ -6,7 +6,7 @@
 /*   By: aapadill <aapadill@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 01:33:10 by aapadill          #+#    #+#             */
-/*   Updated: 2026/01/21 05:14:03 by aapadill         ###   ########.fr       */
+/*   Updated: 2026/01/22 13:45:21 by aapadill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ class Bureaucrat;
 class Form {
 	private:
 		const std::string _name;
-		bool _isSigned;
+		bool _isSigned; //at construction it's false
 		const int _gradeToSign;
 		const int _gradeToExec;
 	
