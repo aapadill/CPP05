@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 #include <iostream>
 
 static void test_construct_valid()
@@ -77,11 +78,29 @@ static void test_copy_and_assign()
     //name should remain same, grade should change to 42
 }
 
+
+static void test_form_sign()
+{
+    std::cout << "\n -- test_form_sign -- \n";
+
+    Form f("NDA", 50, 10);
+    std::cout << f << std::endl;
+
+    Bureaucrat good("Good", 10);
+    Bureaucrat bad("Bad", 100);
+
+    bad.signForm(f);   //should fail
+    good.signForm(f);  //should succeed
+
+    std::cout << f << std::endl;
+}
+
 int main()
 {
 	test_construct_valid();
 	test_construct_invalid();
 	test_increment_decrement_edges();
 	test_copy_and_assign();
+	test_form_sign();
 	return 0;
 }

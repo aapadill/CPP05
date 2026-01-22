@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 Bureaucrat::Bureaucrat() : _name("default"), _grade(150) // default constructor //should i remove?
 {}
@@ -55,6 +56,20 @@ void Bureaucrat::decrementGrade()
 	if (_grade >= 150)
 		throw GradeTooLowException();
 	_grade++;
+}
+
+void Bureaucrat::signForm(Form &f)
+{
+    try
+	{
+        f.beSigned(*this);
+        std::cout << _name << " signed " << f.getName() << std::endl;
+	}
+    catch (std::exception &e)
+	{
+        std::cout << _name << " couldn’t sign " << f.getName()
+				  << " because " << e.what() << "." << std::endl;
+    }
 }
 
 // msgs virtual overload

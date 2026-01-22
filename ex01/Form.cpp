@@ -11,31 +11,32 @@
 /* ************************************************************************** */
 
 #include "Form.hpp"
+#include "Bureaucrat.hpp"
 
 //default ctor
-Form::Form() : _name(""), _isSigned(false), _gradeToSign(1), _gradeToExec(1)
+Form::Form() : _name(""), _isSigned(false), _gradeToSign(150), _gradeToExec(150)
 {}
 
 //ctor
 //if constructor throws, it was never built
-Form::Form(std::string name, int gradeToSign, int gradeToExec) : _name(name), _isSigned(false), _gradeToExec(gradeToExec)
+Form::Form(std::string name, int gradeToSign, int gradeToExec) : _name(name), _isSigned(false), _gradeToSign(gradeToSign), _gradeToExec(gradeToExec)
 {
-	if (gradeToSign < 1 | gradeToExec < 1)
+	if (gradeToSign < 1 || gradeToExec < 1)
 		throw GradeTooHighException();
-	if (gradeToSign > 150 | gradeToExec > 150)
+	if (gradeToSign > 150 || gradeToExec > 150)
 		throw GradeTooLowException();
-	_gradeToSign = gradeToSign;
 }
 
 //copy ctor
-Form::Form(const Form &other) : _name(other._name), _isSigned(other._isSigned), _gradeToSign(other._gradeToSign), gradeToExec(other._gradeToExec)
+Form::Form(const Form &other) : _name(other._name), _isSigned(other._isSigned), _gradeToSign(other._gradeToSign), _gradeToExec(other._gradeToExec)
 {}
 
 //operator= overload
 Form &Form::operator=(const Form &other)
 {
 	if (this != &other)
-		_isSigned = 
+		_isSigned = other._isSigned;
+	return *this;
 }
 
 Form::~Form(){}
@@ -67,4 +68,26 @@ void Form::beSigned(Bureaucrat const &b)
 	if (b.getGrade() > _gradeToSign)
 		throw GradeTooLowException();
 	_isSigned = true;
+}
+
+// what()
+const char *Form::GradeTooHighException::what() const throw()
+{
+    return "Form grade too high";
+}
+
+const char *Form::GradeTooLowException::what() const throw()
+{
+    return "Form grade too low";
+}
+
+// operator<<
+std::ostream &operator<<(std::ostream &o, const Form &f)
+{
+    o << "Form " << f.getName()
+      << " (signed: " << (f.getIsSigned() ? "true" : "false")
+      << ", gradeToSign: " << f.getGradeToSign()
+      << ", gradeToExec: " << f.getGradeToExec()
+      << ")";
+    return o;
 }

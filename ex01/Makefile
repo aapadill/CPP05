@@ -8,7 +8,7 @@ INFILES =	Form.cpp \
 
 OBJFILES = $(INFILES:.cpp=.o)
 
-NAME = bureaucrat
+NAME = bureaucrat_with_form
 
 all: $(NAME)
 
