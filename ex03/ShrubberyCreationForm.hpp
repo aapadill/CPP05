@@ -1,0 +1,30 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aapadill <aapadill@student.hive.fi>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/27 23:30:56 by aapadill          #+#    #+#             */
+/*   Updated: 2026/01/27 23:30:57 by aapadill         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#pragma once
+#include "AForm.hpp"
+#include <string>
+
+class ShrubberyCreationForm : public AForm {
+	private:
+		ShrubberyCreationForm();
+		std::string _target;
+
+	protected:
+		void executeAction() const;
+
+	public:
+		ShrubberyCreationForm(const std::string &target);
+		ShrubberyCreationForm(const ShrubberyCreationForm &other);
+		ShrubberyCreationForm &operator=(const ShrubberyCreationForm &other);
+		~ShrubberyCreationForm();
+};

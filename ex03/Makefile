@@ -2,17 +2,22 @@ C++ = c++
 STD = -std=c++98
 C++_FLAGS = -Wall -Wextra -Werror
 
-INFILES =	Bureaucrat.cpp \
+INFILES =	AForm.cpp \
+			Bureaucrat.cpp \
+			ShrubberyCreationForm.cpp \
+			RobotomyRequestForm.cpp \
+			PresidentialPardonForm.cpp \
+			Intern.cpp \
 			main.cpp
 
 OBJFILES = $(INFILES:.cpp=.o)
 
-NAME = ex00
+NAME = ex03
 
 all: $(NAME)
 
 $(NAME):$(OBJFILES)
-	$(C++) $(STD) $(C++_FLAGS) $(OBJFILES) -o $(NAME) 
+	$(C++) $(STD) $(C++_FLAGS) $(OBJFILES) -o $(NAME)
 
 %.o: %.cpp
 	$(C++) $(STD) $(C++_FLAGS) -c $< -o $@
@@ -22,6 +27,7 @@ clean:
 
 fclean: clean
 	rm -f $(NAME)
+	rm -f *_shrubbery
 
 re: fclean all
 
