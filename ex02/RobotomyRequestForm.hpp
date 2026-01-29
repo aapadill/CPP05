@@ -17,13 +17,13 @@
 
 class RobotomyRequestForm : public AForm {
 	private:
-		RobotomyRequestForm();
 		std::string _target;
 
 	protected:
 		void executeAction() const;
 
 	public:
+		RobotomyRequestForm();
 		RobotomyRequestForm(const std::string &target);
 		RobotomyRequestForm(const RobotomyRequestForm &other);
 		RobotomyRequestForm &operator=(const RobotomyRequestForm &other);

@@ -12,7 +12,11 @@
 
 #include "ShrubberyCreationForm.hpp"
 #include <fstream>
-#include <iostream>
+#include <stdexcept>
+
+ShrubberyCreationForm::ShrubberyCreationForm()
+: AForm("ShrubberyCreationForm", 145, 137), _target("default")
+{}
 
 ShrubberyCreationForm::ShrubberyCreationForm(const std::string &target)
 : AForm("ShrubberyCreationForm", 145, 137), _target(target)
@@ -26,7 +30,10 @@ ShrubberyCreationForm &
 ShrubberyCreationForm::operator=(const ShrubberyCreationForm &other)
 {
     if (this != &other)
+	{
+		AForm::operator=(other);
         _target = other._target;
+	}
     return *this;
 }
 
@@ -36,10 +43,7 @@ void ShrubberyCreationForm::executeAction() const
 {
 	std::ofstream out((_target + "_shrubbery").c_str());
 	if (!out)
-	{
-		std::cerr << "Error: could not create shrubbery file." << std::endl;
-		return;
-	}
+		throw std::runtime_error("could not create shrubbery file");
 	out << "       _-_" << std::endl;
 	out << "    /~~   ~~\\" << std::endl;
 	out << " /~~         ~~\\" << std::endl;

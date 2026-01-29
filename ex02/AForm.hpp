@@ -19,7 +19,6 @@ class Bureaucrat;
 
 class AForm { //abstract class
 	private: //from pdf -> form's atts need to remain priv and belong to base class
-		AForm();
 		const std::string _name;
 		bool _isSigned; //at construction it's false
 		const int _gradeToSign;
@@ -29,6 +28,7 @@ class AForm { //abstract class
 		virtual void executeAction() const = 0; //pure virtual function //protected so derived can use it
 	
 	public:
+		AForm();
 		AForm(std::string name, int gradeToSign, int gradeToExec);
 		AForm(const AForm &other);
 		AForm &operator=(const AForm &other);

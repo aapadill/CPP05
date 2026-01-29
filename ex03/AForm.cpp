@@ -15,6 +15,10 @@
 
 //ctor
 //if constructor throws, it was never built
+AForm::AForm()
+: _name("AForm"), _isSigned(false), _gradeToSign(150), _gradeToExec(150)
+{}
+
 AForm::AForm(std::string name, int gradeToSign, int gradeToExec)
 : _name(name), _isSigned(false), _gradeToSign(gradeToSign), _gradeToExec(gradeToExec)
 {

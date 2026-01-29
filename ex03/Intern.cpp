@@ -64,7 +64,7 @@ AForm *Intern::makeForm(const std::string &name, const std::string &target) cons
 		if (name == forms[i].name)
 		{
 			AForm *form = forms[i].create(target);
-			std::cout << "Intern creates " << form->getName() << std::endl;
+			std::cout << "Intern creates " << name << std::endl;
 			return form;
 		}
 	}
